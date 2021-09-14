@@ -1,0 +1,18 @@
+{
+  "params": {
+    "local_server": "True",
+    "local_uri": "mysql+pymysql://root:@localhost/codingthunder",
+    "prod_uri": "mysql+pymysql://root:@localhost/codingthunder",
+    "fb_url": "https://facebook.com/codingwiththunder",
+    "tw_url": "https://twitter.com/codingwiththunder",
+    "gh_url": "https://github.com/codingwiththunder",
+    "about_text": "Hi this is chirag patel and i love programming so this is first one for flask.",
+    "no_of_post": 3,
+    "admin_user": "username",
+    "admin_password": "password",
+    "upload_path": "G:\\project\\python\\Flask\\Training\\venv\\Tutorials\\static\\assets",
+    "blog_name": "Crazy programmers",
+    "subheading": "your first love become programming."
+
+  }
+}

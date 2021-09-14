@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+        <!-- Page Header-->
+        <header class="masthead mb-1" style="background-image: url('{{ url_for('static',filename='assets/img/home-bg.jpg') }}')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>Admin Panel</h1>
+                            <span class="subheading">You can mange posts here.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category,message in messages %}
+        <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+          <strong>Holy {{params['admin_user']}}!</strong> {{message}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7 ">
+
+                <a href="/edit/0"><center><button class="btn btn-primary ">Add Post</button></center></a>
+<!--                <a href="/logout"><button class="btn btn-warning">Logout</button></a>-->
+
+                <hr>
+                <h1>Manage Post</h1>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th>No</th>
+                        <th>Title</th>
+                        <th>Date</th>
+                        <th colspan="2">#</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for post in post %}
+                      <tr>
+                        <td>{{post.sno}}</td>
+                        <td>{{post.title}}</td>
+                        <td>{{post.date}}</td>
+                        <td><a href="/edit/{{post.sno}}"><button class="btn btn-primary">Edit</button></a></td>
+                        <td><a href="/delete/{{post.sno}}"><button class="btn btn-danger">Delete</button></a></td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                    <hr>
+                    <h1>Upload File</h1>
+                    <form action="/uploader" method="post" enctype="multipart/form-data">
+                        <input type="file" name="file1">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+{% endblock %}
