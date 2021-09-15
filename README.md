@@ -17,6 +17,8 @@ The name of the configuration file is arbitrary but requirements.txt is often us
 
 Put requirements.txt in the directory where the command will be executed. If it is in another directory, specify the path.
 
+Import codingthunder.sql file into your database or xampp server/ phpmyadmin
+
 Open main.py file with double click and you can see server is starting with
 
 https://127.0.0.1:5000
