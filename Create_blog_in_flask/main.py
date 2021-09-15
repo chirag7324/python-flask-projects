@@ -1,5 +1,7 @@
 from flask import Flask,render_template,request, session, redirect, flash
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Column,Integer,String
+
 from datetime import datetime
 import json
 import os
@@ -23,7 +25,7 @@ if (local_server):
     app.config['SQLALCHEMY_DATABASE_URI'] = params["local_uri"]
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = params["prod_uri"]
-
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 class Contacts(db.Model):
@@ -34,6 +36,7 @@ class Contacts(db.Model):
     msg = db.Column(db.String(120), nullable=False)
     date = db.Column(db.String(12), nullable=True)
     email = db.Column(db.String(50), nullable=False)
+
 
 
 class Posts(db.Model):
